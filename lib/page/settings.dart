@@ -137,7 +137,7 @@ class _SettingsPage extends State<SettingsPage> {
                             })
                         : null;
                     */
-                    snack(context, const Text('Cache cleared!'));
+                    Utils.snack(context, const Text('Cache cleared!'));
                   }
                 },
               ),

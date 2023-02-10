@@ -111,7 +111,6 @@ class _Fleaflet extends State<Fleaflet> {
     super.dispose();
   }
 
-
   var humphreysBorderCoords = [
     [36.9691682, 127.0367575],
     [36.9694197, 127.0367542],
@@ -329,7 +328,10 @@ class _Fleaflet extends State<Fleaflet> {
     return Container(
       child: FlutterMap(
         options: MapOptions(
-          center: LatLng(humphreysCenterCoords['lat']??0, humphreysCenterCoords['lng']??0),
+          center: LatLng(
+            Consts.humphreysCenterCoords['lat'] ?? 0,
+            Consts.humphreysCenterCoords['lng'] ?? 0,
+          ),
           minZoom: 12.5,
           zoom: 15,
           maxZoom: 17,
@@ -338,10 +340,14 @@ class _Fleaflet extends State<Fleaflet> {
             print('zoom level:${position.zoom}');
           },
           maxBounds: LatLngBounds(
-            LatLng(humphreysMapBounds[CoordsType.y0]!,
-                humphreysMapBounds[CoordsType.x0]!),
-            LatLng(humphreysMapBounds[CoordsType.y1]!,
-                humphreysMapBounds[CoordsType.x1]!),
+            LatLng(
+              Consts.humphreysMapBounds[CoordsType.y0]!,
+              Consts.humphreysMapBounds[CoordsType.x0]!,
+            ),
+            LatLng(
+              Consts.humphreysMapBounds[CoordsType.y1]!,
+              Consts.humphreysMapBounds[CoordsType.x1]!,
+            ),
           ),
         ),
         nonRotatedChildren: [
@@ -350,11 +356,9 @@ class _Fleaflet extends State<Fleaflet> {
             maxWidth: double.infinity,
             child: AttributionWidget.defaultWidget(
               source: layers[layerIdx].urlTemplate ?? '',
-              onSourceTapped: () {
-              },
+              onSourceTapped: () {},
             ),
           )
-
         ],
         children: [
           layers[layerIdx],
