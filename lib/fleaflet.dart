@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'utils.dart';
 import 'consts.dart';
 
@@ -351,12 +350,7 @@ class _Fleaflet extends State<Fleaflet> {
             maxWidth: double.infinity,
             child: AttributionWidget.defaultWidget(
               source: layers[layerIdx].urlTemplate ?? '',
-              onSourceTapped: () async {
-                // Requires 'url_launcher'
-                if (!await launchUrl(
-                    Uri.parse("https://stadiamaps.com/attribution"))) {
-                  if (kDebugMode) print('Could not launch URL');
-                }
+              onSourceTapped: () {
               },
             ),
           )

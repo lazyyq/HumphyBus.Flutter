@@ -1,7 +1,6 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'osm.dart';
 import 'fleaflet.dart';
 import 'fleafletvector.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -65,7 +64,6 @@ class _MapHomePage extends State<MapHomePage> {
     _maps = [
       Fleaflet(),
       FleafletVector(),
-      const OSM(),
     ];
 
     switchVisible = _maps[mapIdx] is Fleaflet;

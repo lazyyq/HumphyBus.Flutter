@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_map_tiles/vector_map_tiles.dart';
 import 'package:vector_tile_renderer/vector_tile_renderer.dart';
 
@@ -86,12 +85,7 @@ class _FleafletVector extends State<FleafletVector> {
         nonRotatedChildren: [
           AttributionWidget.defaultWidget(
             source: 'Stadia Maps © OpenMapTiles',
-            onSourceTapped: () async {
-              // Requires 'url_launcher'
-              if (!await launchUrl(
-                  Uri.parse("https://stadiamaps.com/attribution"))) {
-                if (kDebugMode) print('Could not launch URL');
-              }
+            onSourceTapped: () {
             },
           )
         ],
