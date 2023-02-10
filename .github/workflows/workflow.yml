@@ -16,7 +16,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.x' 
+          flutter-version: '3.7.x'
           channel: 'stable'
 
       - name: Enable Flutter Web
@@ -27,6 +27,9 @@ jobs:
 
       - name: Build
         run: flutter build web
+
+      - name: Fix main page
+        run: mv web/index{_gh,}.html
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
