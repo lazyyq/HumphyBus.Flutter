@@ -26,10 +26,7 @@ jobs:
         run: flutter pub get
 
       - name: Build
-        run: flutter build web
-
-      - name: Fix main page
-        run: mv web/index{_gh,}.html
+        run: mv web/index{_gh,}.html && flutter build web
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
