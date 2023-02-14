@@ -1,4 +1,5 @@
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'fleaflet.dart';
@@ -108,7 +109,7 @@ class _MapHomePage extends State<MapHomePage> {
                 for (var key in SettingsPage.initKeys) key: pref.get(key)
               };
               if (context.mounted) {
-                Navigator.of(context).push(MaterialPageRoute(
+                Navigator.of(context).push(CupertinoPageRoute(
                   builder: (context) {
                     return SettingsPage(initValues: initValues);
                   },

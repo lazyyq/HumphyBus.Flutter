@@ -60,6 +60,8 @@ class _SettingsPage extends State<SettingsPage> {
         title: const Text('Settings'),
       ),
       body: SettingsList(
+        applicationType: ApplicationType.material,
+        platform: DevicePlatform.android,
         lightTheme: getSettingsTheme(context),
         darkTheme: getSettingsTheme(context),
         sections: [
