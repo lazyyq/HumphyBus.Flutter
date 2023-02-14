@@ -137,51 +137,48 @@ class _MapHomePage extends State<MapHomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(
-              child: Text('Black'),
-              onPressed: () {
-                (_maps[mapIdx] as Fleaflet).toggleBlackRoute();
-              },
-            ),
-            multiFabDivider(),
-            TextButton(
-              child: Text('Blue'),
-              onPressed: () {
-                (_maps[mapIdx] as Fleaflet).toggleBlueRoute();
-              },
-            ),
-            multiFabDivider(),
-            multiFabIconItem(
-              icon: Icons.recycling,
-              tooltip: 'Clear cache',
-              onPressed: () {
-                DefaultCacheManager().emptyCache();
-              },
-            ),
-            multiFabDivider(),
-            Visibility(
-              visible: switchVisible,
-              child: Column(
-                children: [
-                  multiFabIconItem(
-                    icon: Icons.map,
-                    tooltip: 'Change map type',
-                    onPressed: () {
-                      (_maps[mapIdx] as Fleaflet).switchTemplate();
-                      setState(() {});
-                    },
+          children: Fleaflet.buses
+                  .map((e) => [
+                        TextButton(
+                            onPressed: () {
+                              (_maps[mapIdx] as Fleaflet).toggleRoute(e);
+                            },
+                            child: Text(e)),
+                        multiFabDivider(),
+                      ])
+                  .expand((e) => e)
+                  .toList() +
+              [
+                multiFabIconItem(
+                  icon: Icons.recycling,
+                  tooltip: 'Clear cache',
+                  onPressed: () {
+                    DefaultCacheManager().emptyCache();
+                  },
+                ),
+                multiFabDivider(),
+                Visibility(
+                  visible: switchVisible,
+                  child: Column(
+                    children: [
+                      multiFabIconItem(
+                        icon: Icons.map,
+                        tooltip: 'Change map type',
+                        onPressed: () {
+                          (_maps[mapIdx] as Fleaflet).switchTemplate();
+                          setState(() {});
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            multiFabDivider(),
-            multiFabIconItem(
-              icon: Icons.refresh,
-              tooltip: 'Switch map',
-              onPressed: switchMap,
-            ),
-          ],
+                ),
+                multiFabDivider(),
+                multiFabIconItem(
+                  icon: Icons.refresh,
+                  tooltip: 'Switch map',
+                  onPressed: switchMap,
+                ),
+              ],
         ),
       ),
     );
