@@ -75,7 +75,7 @@ class _MapHomePage extends State<MapHomePage> {
     });
   }
 
-  Widget multiFabItem(
+  Widget multiFabIconItem(
       {IconData? icon, String? tooltip, void Function()? onPressed}) {
     return IconButton(
       icon: Icon(icon, color: Theme.of(context).colorScheme.onSurface),
@@ -137,7 +137,21 @@ class _MapHomePage extends State<MapHomePage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            multiFabItem(
+            TextButton(
+              child: Text('Black'),
+              onPressed: () {
+                (_maps[mapIdx] as Fleaflet).toggleBlackRoute();
+              },
+            ),
+            multiFabDivider(),
+            TextButton(
+              child: Text('Blue'),
+              onPressed: () {
+                (_maps[mapIdx] as Fleaflet).toggleBlueRoute();
+              },
+            ),
+            multiFabDivider(),
+            multiFabIconItem(
               icon: Icons.recycling,
               tooltip: 'Clear cache',
               onPressed: () {
@@ -149,7 +163,7 @@ class _MapHomePage extends State<MapHomePage> {
               visible: switchVisible,
               child: Column(
                 children: [
-                  multiFabItem(
+                  multiFabIconItem(
                     icon: Icons.map,
                     tooltip: 'Change map type',
                     onPressed: () {
@@ -161,7 +175,7 @@ class _MapHomePage extends State<MapHomePage> {
               ),
             ),
             multiFabDivider(),
-            multiFabItem(
+            multiFabIconItem(
               icon: Icons.refresh,
               tooltip: 'Switch map',
               onPressed: switchMap,
